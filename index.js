@@ -30,8 +30,11 @@ app.get("/api/:date?", (req, res) => {
   const urlValue = req.params.date;
   
   const analyzeUrlDate = (dt) => {
+
+
     if(dt == null){
-      return res.send("EMPTY")
+      const currentTime = new Date().getTime()
+      return res.json({"unix": currentTime})
     }
     if(/^[1]/.test(dt) !== true){
       let stringDate = urlValue.toString()
