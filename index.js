@@ -29,6 +29,8 @@ app.get("/api/:date?", (req, res) => {
   //params gets the URL value
   const urlValue = req.params.date;
   
+  let qa = /^[a-z]/
+
   const analyzeUrlDate = (dt) => {
 
 
@@ -39,6 +41,9 @@ app.get("/api/:date?", (req, res) => {
         "unix": currentTimeUnix,
         "utc": currentTimeUTC
       })
+    }
+    if(qa.test(dt) == true){
+      return res.json({error : "Invalid Date"})
     }
     if(/^[1]/.test(dt) !== true){
       let stringDate = urlValue.toString()

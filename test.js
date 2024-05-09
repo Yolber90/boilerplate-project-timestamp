@@ -1,6 +1,8 @@
-let timeTest = new Date("2015-12-25").getTime()
-console.log(timeTest);
 
-let check = /^[1]/
 
-console.log(check.test(15146456))
+function testThis(t){
+    let qa = /^[a-z]/
+    return qa.test(t)
+}
+
+console.log(testThis("5sfd"))
