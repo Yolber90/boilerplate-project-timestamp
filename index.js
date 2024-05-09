@@ -29,18 +29,18 @@ app.get("/api/:date?", (req, res) => {
   //params gets the URL value
   const urlValue = req.params.date;
   
-  let check = /[\d-]{5,}/.test(urlValue)
+  // let check = /[\d-]{5,}/.test(urlValue)
 
   const analyzeUrlDate = (dt) => {
     if(/^[1]/.test(dt) !== true){
       let stringDate = urlValue.toString()
       const unixDate = new Date(stringDate).getTime()
       const utcDate = new Date(stringDate).toUTCString()
-      return res.send(unixDate + " - " + utcDate)
+      return res.json({"unix": unixDate,"utc": utcDate})
     }else{
       const unixDate = new Date(parseInt(urlValue)).getTime()
       const utcDate = new Date(parseInt(urlValue)).toUTCString()
-      return res.send(unixDate + " - " + utcDate)
+      return res.json({"unix": unixDate,"utc": utcDate})
     }
   }
 
