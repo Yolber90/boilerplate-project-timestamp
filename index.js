@@ -33,8 +33,12 @@ app.get("/api/:date?", (req, res) => {
 
 
     if(dt == null){
-      const currentTime = new Date().getTime()
-      return res.json({"unix": currentTime})
+      const currentTimeUnix = new Date().getTime()
+      const currentTimeUTC = new Date().toUTCString()
+      return res.json({
+        "unix": currentTimeUnix,
+        "utc": currentTimeUTC
+      })
     }
     if(/^[1]/.test(dt) !== true){
       let stringDate = urlValue.toString()
