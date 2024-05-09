@@ -31,25 +31,23 @@ var listener = app.listen(process.env.PORT || 3000, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
 
-app.get("/api/:date?", (req, res, next)=>{
-  req.date = {
-    "unix": new Date().getTime()
-  };
-  next();
-},function(req, res){
 
-  res.send(req.date)
-}
-)
+// app.get("/api/:date?", (req, res, next)=>{
+//   req.date = {
+//     "unix": new Date().getTime(),
+//     "utc": new Date().toUTCString()
+//   };
+//   next();
+// },function(req, res){
+//   res.send(req.date)
+// }
+// )
 
-app.get("/api/1451001600000", (req, res, next)=>{
+app.get("/api/:date?", (req, res)=>{
   req.date = {
     "unix": new Date().getTime(),
     "utc": new Date().toUTCString()
   };
-  next();
-},function(req, res){
-    
   res.send(req.date)
 }
 )
