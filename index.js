@@ -29,7 +29,7 @@ app.get("/api/:date?", (req, res)=>{
     "unix": new Date().getTime(),
     "utc": new Date().toUTCString()
   };
-  res.send(req.date)
+  res.json(req.date)
 }
 )
 
@@ -40,16 +40,7 @@ var listener = app.listen(process.env.PORT || 3000, function () {
 });
 
 
-// app.get("/api/:date?", (req, res, next)=>{
-//   req.date = {
-//     "unix": new Date().getTime(),
-//     "utc": new Date().toUTCString()
-//   };
-//   next();
-// },function(req, res){
-//   res.send(req.date)
-// }
-// )
+
 
 
 
